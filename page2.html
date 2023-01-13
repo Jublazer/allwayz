@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="workpage" class="container-sm shadow-lg p-5 bg-light">
+        <h3>Working with local storage By Timothy</h3>
+        <hr />
+        <p>
+            Bellow are the what you store  on your system local storage 
+            <br>
+            <strong>You typed: </strong> <span id="view"></span> <script>
+            document.getElementById("view").innerText = localStorage.getItem("savefile");</script>
+        </p>
+    </div>
+</body>
+</html>

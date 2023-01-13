@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5/css/bootstrap.css" >
+    <link rel="stylesheet" href="assets/css/styles.css" > 
+    <link rel="stylesheet" href="assets/bootstrap-icons/" >
+    <script type="text/javascript" src="bootstrap-5/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/jquery.js"></script>
+    <title>Ukdion Assessment Complain Page</title>
+</head>
+<body>
+  <div id="target" class="card-body shadow-sm container-sm p-5 my-10">
+  <div class="card card-body shadow-sm" id="output"></div>
+  <form action="page2.html" method="post" class="form-control">
+    <input type="text" id="inputer" class="form-control form-group"><input type="button" class="btn btn-success btn-sm form-control" value="Save" onclick="savedata();" />
+  </form>
+</div>
+  <script>
+    const data = document.getElementById("inputer");
+    const result = document.getElementById("output");
+    function savedata(){
+      data.value;
+      localStorage.setItem("savefile",data);
+    }
+  </script>
+  <script>
+      var jso = {"name":"Timothy Jonah","age":30,"address":"Minna, Niger state"};
+    //  converting json variable to object
+      var obj = JSON.parse(jso);
+      var target = document.getElementById("target");
+      console.write(obj.name);
+      target.innerHTML() = obj.name;
+
+      // accessing individual values from the object
+      $(document).ready(function(){
+        alert("Hello " +obj.name+ " you are" +obj.age+ "  old, and you are from " +obj.address);
+        $("#target").html("Hello " +obj.name+ " you are" +obj.age+ "  old, and you are from " +obj.address);
+      });
+  </script>
+  <div id="workpage" class="container-sm shadow-md p-5 bg-light text-success">
+    <h3>Working with local storage By Timothy</h3>
+    <hr />
+    <p>
+        Bellow are the what you store  on your system local storage 
+        <br>
+        <strong>You typed: </strong> <span id="view"></span> <script>
+         async function print1(){
+          result.innerText = data.value;
+          document.getElementById("view").innerText = localStorage.getItem("savefile");
+         } 
+          data.focus(setInterval(print1,2000));
+          data.blur(clearInterval());
+        </script>
+    </p>
+</div>
+</body>
+</html>

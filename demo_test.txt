@@ -1,0 +1,85 @@
+Just an AJAX TEST
+
+jquery AJAX 
+
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.ajax({url: "demo_test.txt", success: function(result){
+      $("#div1").html(result);
+    }});
+  });
+});
+</script>
+</head>
+<body>
+
+// designing the ajax page
+
+
+
+$(document).ready(function(){
+        function loginUser(){
+                $("#btn").click(function(){
+                    const usernam = $("#name").val;();
+                    const pass = $("#pass").val;();
+
+                    $.ajax({
+                        url:    "ajax.php",
+                        type:   "post",
+                        async:  "false",
+                        data:   {
+                                done: 1,
+                                username =  "usernam",
+                                password =  "pass"
+                        },
+                        success:    function(data){
+                                displayData();
+                        }
+                    });
+                });
+            };
+});
+        
+// Function for displaying result of loginUser
+$(document).ready(function(){
+    function displayData(){
+        $.ajax({
+            url:       "ajax.php",
+            type:       "post",
+            async:      "false",
+            data:       {
+                            display:    1
+            },
+            success:     function(d){
+                $("#targetElementToDisplayData").html(d);
+            }
+        });
+
+    }
+});
+
+
+//AJAX.PHP PAGE
+
+if(isset($_POST['display'])){
+    $session_start();
+    include('config.php');
+    $sql = "SELECT email, password FROM users LIMIT 1";
+    $result = mysqli_query($con, $sql);
+
+    // Associative array
+    //$row = mysqli_fetch_assoc($result);
+
+    if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    $row = mysqli_fetch_assoc($result);
+        $_SESSION["user"] = $row["username"];
+        $userId = $row["id"];
+        jason_encode($raw);
+    } else {
+        echo "Invalid user please confirm your information. ";
+    };
+
+    mysqli_close($con);
+}
